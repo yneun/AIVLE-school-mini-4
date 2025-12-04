@@ -1,4 +1,4 @@
-package com.example.book.domain;
+package com.example.api.bookmanage.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

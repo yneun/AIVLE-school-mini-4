@@ -1,7 +1,7 @@
-package com.example.book.service;
+package com.example.api.bookmanage.service;
 
-import com.example.book.domain.Book;
-import com.example.book.repository.BookRepository;
+import com.example.api.bookmanage.domain.Book;
+import com.example.api.bookmanage.repository.BookRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

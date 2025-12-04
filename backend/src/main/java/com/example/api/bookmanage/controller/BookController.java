@@ -1,7 +1,7 @@
-package com.example.book.controller;
+package com.example.api.bookmanage.controller;
 
-import com.example.book.domain.Book;
-import com.example.book.service.BookService;
+import com.example.api.bookmanage.domain.Book;
+import com.example.api.bookmanage.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
