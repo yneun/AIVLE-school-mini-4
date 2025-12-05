@@ -10,7 +10,4 @@ import java.util.Optional;
 public interface UserRepository  extends JpaRepository<User, Long> {
     // 아이디 조회
     Optional<User> findByLoginId(String loginId);
-
-    // 아이디 중복 조회
-    boolean existsByLoginId(String loginId);
 }

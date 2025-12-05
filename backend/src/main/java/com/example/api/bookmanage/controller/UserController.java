@@ -1,12 +1,12 @@
 package com.example.api.bookmanage.controller;
 
-import com.example.api.bookmanage.domain.User;
-import com.example.api.bookmanage.dto.UserRequest;
-import com.example.api.bookmanage.dto.UserResponse;
+import com.example.api.bookmanage.dto.UserDTO;
 import com.example.api.bookmanage.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -17,23 +17,29 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/users")
-    public ResponseEntity<UserResponse> registerUser(@RequestBody UserRequest request) {
-        User createdUser = userService.registerUser(request.getLoginId(), request.getPassword());
-        return ResponseEntity.ok(new UserResponse(createdUser.getId(), createdUser.getLoginId()));
+    public ResponseEntity<UserDTO.Response> registerUser(
+            @RequestBody @Valid UserDTO.Request request) {
+
+        UserDTO.Response response = userService.registerUser(request);
+        return ResponseEntity.ok(response);
     }
 
     // 로그인
     @PostMapping("/auth/login")
-    public ResponseEntity<UserResponse> login(@RequestBody UserRequest request) {
-        User loggedInUser = userService.login(request.getLoginId(), request.getPassword());
-        return ResponseEntity.ok(new UserResponse(loggedInUser.getId(), loggedInUser.getLoginId()));
+    public ResponseEntity<UserDTO.Response> login(
+            @RequestBody @Valid UserDTO.Request request) {
+
+        UserDTO.Response response = userService.login(request);
+        return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/users/{userId}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long userId,
-                                              @RequestBody UserRequest dto) {
-        User updatedUser = userService.updateUser(userId, dto.getLoginId(), dto.getPassword());
-        return ResponseEntity.ok(new UserResponse(updatedUser.getId(), updatedUser.getLoginId()));
-    }
+    // 비밀번호 수정
+    @PutMapping("/users/{loginId}")
+    public ResponseEntity<UserDTO.Response> updatePassword(
+            @PathVariable String loginId,
+            @RequestBody @Valid UserDTO.Request request) {
 
+        UserDTO.Response response = userService.updatePassword(loginId, request);
+        return ResponseEntity.ok(response);
+    }
 }
