@@ -33,7 +33,7 @@ public class UserDTO {
     @AllArgsConstructor
     public static class Response {
 
-        private String LoginId;     // 회원가입/로그인 시 반환
+        private String loginId;     // 회원가입/로그인 시 반환
         private String message;  // 회원가입/수정 시 상태 메시지
     }
 
@@ -45,7 +45,7 @@ public class UserDTO {
     public static class PasswordUpdateRequest{
 
         @NotBlank
-        private String LoginId;
+        private String loginId;
 
         @NotBlank
         private String oldPassword;
