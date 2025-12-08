@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import EditBookPage from "../pages/EditBookPage.jsx";
 
-function BookCard({ book, setBooks }) {
+// 추가: react-router-dom의 useNavigate 사용
+
+function BookCard({ book, setBooks, onClick }) {
     const [showActions, setShowActions] = useState(false);
+    const navigate = useNavigate();
 
-    const handleCardClick = () => {
-        setShowActions(prev => !prev); // 클릭 시 토글
+    const handleCardClick = (e) => {
+        setShowActions(prev => !prev);
+        if (onClick) onClick(); // 상위 컴포넌트로 클릭 전달
     };
 
     const handleDelete = () => {
@@ -14,27 +20,15 @@ function BookCard({ book, setBooks }) {
     };
 
     const handleEdit = () => {
-        const newTitle = prompt('새 도서 제목을 입력하세요', book.title);
-        if (newTitle) {
-            setBooks(prev => prev.map(b => b.id === book.id ? { ...b, title: newTitle } : b));
-        }
+        navigate(`/edit-book/${book.id}`);
     };
 
     return (
         <div
             className="book-card"
-            style={{
-                border: '1px solid #ccc',
-                padding: '10px',
-                margin: '10px',
-                borderRadius: '5px',
-                display: 'flex',
-                cursor: 'pointer',
-                backgroundColor: showActions ? '#f9f9f9' : '#fff'
-            }}
+            style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px', display: 'flex', cursor: 'pointer', backgroundColor: showActions ? '#f9f9f9' : '#fff' }}
             onClick={handleCardClick}
         >
-            {/* 좌측 커버 이미지 */}
             <div className="book-cover">
                 <img
                     src={book.cover_img || "https://via.placeholder.com/100x150"}
@@ -43,7 +37,6 @@ function BookCard({ book, setBooks }) {
                 />
             </div>
 
-            {/* 우측 상세 정보 */}
             <div className="book-info" style={{ flex: 1 }}>
                 <h3>{book.title}</h3>
                 <p className="author">저자: {book.author}</p>
@@ -51,7 +44,6 @@ function BookCard({ book, setBooks }) {
                 <p className="publisher">출판사: {book.publisher}</p>
                 <p className="genre">장르: {book.genre}</p>
 
-                {/* 수정/삭제 버튼 - 카드 클릭 시만 표시 */}
                 {showActions && (
                     <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
                         <Button variant="outlined" color="primary" onClick={(e) => { e.stopPropagation(); handleEdit(); }}>
@@ -66,10 +58,7 @@ function BookCard({ book, setBooks }) {
         </div>
     );
 }
-
 export default BookCard;
-
-
 
 
 

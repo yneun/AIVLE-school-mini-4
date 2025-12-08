@@ -34,7 +34,7 @@ header h1 {
 /* 사이드바 스타일링 */
 .sidebar {
     width: 200px;
-    background-color: #3498db;
+    background-color: lightskyblue;
     padding: 20px;
     text-align: center;
     box-shadow: 2px 5px rgba(0, 0, 0, 0.1);
@@ -106,19 +106,24 @@ header h1 {
     line-height: 1.4;
 }
 
+/* 공통 스타일: 모든 텍스트 항목에 대해 동일한 스타일 적용 */
 .book-info p {
-    font-size: 12px;
-    color: #646cff;
+    font-size: 14px;   /* 모든 텍스트 크기를 동일하게 */
+    color: #333;       /* 진한 회색으로 설정 */
+    margin: 5px 0;     /* 간격을 좀 더 줘서 각 항목이 명확하게 구분되도록 */
 }
 
 .book-info .author {
-    font-weight: bold;
-    color: aliceblue;
+    /* 저자만 굵게 */
 }
 
 .book-info .publisher {
-    color: aliceblue;
-    font-size: 10px;
+    font-weight: normal; /* 출판사는 기본 폰트로 설정 */
+}
+
+.book-info .isbn,
+.book-info .genre {
+    font-weight: normal; /* ISBN과 장르는 기본 폰트로 설정 */
 }
 
 

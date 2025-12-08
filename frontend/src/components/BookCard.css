@@ -36,17 +36,24 @@
     line-height: 1;
 }
 
+/* 공통 스타일: 모든 텍스트 항목에 대해 동일한 스타일 적용 */
 .book-info p {
-    font-size: 10px;
-    color: #646cff;
+    font-size: 14px;   /* 모든 텍스트 크기를 동일하게 */
+    color: #333;       /* 진한 회색으로 설정 */
+    margin: 5px 0;     /* 간격을 좀 더 줘서 각 항목이 명확하게 구분되도록 */
 }
 
-.book-info .author {
-    font-weight: bold;
-    color: aliceblue;
+.book-info .author { /* 저자만 굵게 */
+    color: #2c3e50;     /* 어두운 회색으로 색상 설정 */
 }
 
 .book-info .publisher {
-    color: aliceblue;
-    font-size: 10px;
+    font-weight: normal; /* 출판사는 기본 폰트로 설정 */
+    color: #2c3e50;      /* 어두운 회색으로 색상 설정 */
+}
+
+.book-info .isbn,
+.book-info .genre {
+    font-weight: normal; /* ISBN과 장르는 기본 폰트로 설정 */
+    color: #555;         /* 밝은 회색으로 설정 */
 }

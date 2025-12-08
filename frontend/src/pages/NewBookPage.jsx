@@ -95,10 +95,10 @@ function NewBookPage({ addNewBook }) {
                             onChange={handleChange}
                             required
                         >
-                            <MenuItem value="Fantasy">로맨스</MenuItem>
-                            <MenuItem value="Sci-Fi">SF/판타지</MenuItem>
-                            <MenuItem value="Mystery">미스터리/공포</MenuItem>
-                            <MenuItem value="Romance">드라마</MenuItem>
+                            <MenuItem value="로맨스">로맨스</MenuItem>
+                            <MenuItem value="SF/판타지">SF/판타지</MenuItem>
+                            <MenuItem value="미스터리/공포">미스터리/공포</MenuItem>
+                            <MenuItem value="드라마">드라마</MenuItem>
                         </Select>
                     </FormControl>
                     <Button type="submit" variant="contained" color="primary" fullWidth>

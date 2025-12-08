@@ -1,4 +1,3 @@
-// EditBookPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TextField, Button, Box, Typography, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
@@ -62,10 +61,10 @@ function EditBookPage({ books, setBooks }) {
                     <FormControl fullWidth margin="normal">
                         <InputLabel>장르 선택</InputLabel>
                         <Select label="장르 선택" name="genre" value={formData.genre} onChange={handleChange} required>
-                            <MenuItem value="Fantasy">로맨스</MenuItem>
-                            <MenuItem value="Sci-Fi">SF/판타지</MenuItem>
-                            <MenuItem value="Mystery">미스터리/공포</MenuItem>
-                            <MenuItem value="Romance">드라마</MenuItem>
+                            <MenuItem value="로맨스">로맨스</MenuItem>
+                            <MenuItem value="SF/판타지">SF/판타지</MenuItem>
+                            <MenuItem value="미스터리/공포">미스터리/공포</MenuItem>
+                            <MenuItem value="드라마">드라마</MenuItem>
                         </Select>
                     </FormControl>
                     <Button type="submit" variant="contained" color="primary" fullWidth>수정 완료</Button>
@@ -76,3 +75,4 @@ function EditBookPage({ books, setBooks }) {
 }
 
 export default EditBookPage;
+
