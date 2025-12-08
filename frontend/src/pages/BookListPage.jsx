@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
 import BookCard from '../components/BookCard';
+import BookDetailModal from '../components/BookDetailModal';
 import './BookListPage.css';
 import Header from '../components/Header';
+import { Modal } from '@mui/material';
 
 function BookListPage({ books, setBooks }) {
     const [searchTerm, setSearchTerm] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
 
-    // 검색어 필터링
     const filteredBooks = books.filter(book =>
-        book.title.toLowerCase().includes(searchTerm.toLowerCase())
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const openModal = (book) => {
+        setSelectedBook(book);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedBook(null);
+    };
 
     return (
         <div className="page-container">
@@ -26,11 +40,12 @@ function BookListPage({ books, setBooks }) {
                     />
                     <div className="book-list">
                         {filteredBooks.length > 0 ? (
-                            filteredBooks.map((book) => (
+                            filteredBooks.map(book => (
                                 <BookCard
-                                    key={book.id}  // index 대신 id 사용
-                                    book={book}    // 전체 book 객체 전달
-                                    setBooks={setBooks} // 상태 업데이트 함수 전달
+                                    key={book.id}
+                                    book={book}
+                                    setBooks={setBooks}
+                                    onClick={() => openModal(book)}
                                 />
                             ))
                         ) : (
@@ -39,11 +54,17 @@ function BookListPage({ books, setBooks }) {
                     </div>
                 </div>
             </div>
+
+            <Modal open={isModalOpen} onClose={closeModal}>
+                <BookDetailModal book={selectedBook} onClose={closeModal} />
+            </Modal>
         </div>
     );
 }
 
 export default BookListPage;
+
+
 //
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';

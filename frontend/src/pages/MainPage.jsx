@@ -53,7 +53,7 @@ function MainPage() {
                 <Typography variant="h4" gutterBottom>Sign Up</Typography>
                 <form onSubmit={handleSignupSubmit}>
                     <TextField
-                        label="아이디"
+                        label="아이디(45자 이하)"
                         name="loginId"
                         value={signupData.loginId}
                         onChange={handleChange}
@@ -62,7 +62,7 @@ function MainPage() {
                         margin="normal"
                     />
                     <TextField
-                        label="비밀번호"
+                        label="비밀번호(최소 8글자 이상)"
                         name="password"
                         type="password"
                         value={signupData.password}

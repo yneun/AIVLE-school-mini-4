@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BookCard from '../components/BookCard';
 import './BookListPage.css';
 import Modal from '@mui/material/Modal';
-import BookDetailModel from '../components/BookDetailModel';
+import BookDetailModel from '../components/BookDetailModal.jsx';
 import Header from '../components/Header';
 
 function BookListPage({ books, setBooks }) { // <-- setBooks 추가

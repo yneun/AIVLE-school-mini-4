@@ -26,7 +26,7 @@ function App() {
                 {/* 사이드바와 헤더가 포함된 레이아웃 */}
                 <Route element={<Layout />}>
                     <Route path="/books" element={<BookListPage books={books} setBooks={setBooks} />} />
-                    <Route path="/search" element={<SearchPage />} />
+                    <Route path="/search" element={<SearchPage books={books} setBooks={setBooks} />} />
                     <Route path="/new-book" element={<NewBookPage addNewBook={addNewBook} />} />
                     <Route path="/book/:id" element={<BookDetailPage books={books} />} />
                     

@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import EditBookPage from "../pages/EditBookPage.jsx";
-
-// 추가: react-router-dom의 useNavigate 사용
 
 function BookCard({ book, setBooks, onClick }) {
     const [showActions, setShowActions] = useState(false);
     const navigate = useNavigate();
 
-    const handleCardClick = (e) => {
+    if (!book) return null;
+
+    const handleCardClick = () => {
         setShowActions(prev => !prev);
-        if (onClick) onClick(); // 상위 컴포넌트로 클릭 전달
+        if (onClick) onClick();
     };
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.stopPropagation();
         if (!window.confirm('정말 삭제하시겠습니까?')) return;
-        setBooks(prev => prev.filter(b => b.id !== book.id));
+
+        if (setBooks) {
+            setBooks(prev => prev.filter(b => b.id !== book.id));
+        }
     };
 
     const handleEdit = () => {
@@ -26,23 +29,21 @@ function BookCard({ book, setBooks, onClick }) {
     return (
         <div
             className="book-card"
-            style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '5px', display: 'flex', cursor: 'pointer', backgroundColor: showActions ? '#f9f9f9' : '#fff' }}
             onClick={handleCardClick}
         >
             <div className="book-cover">
                 <img
-                    src={book.cover_img || "https://via.placeholder.com/100x150"}
+                    src={book.cover_img || "/images/default-book.png"}
                     alt="book cover"
-                    style={{ width: '100px', height: '150px', marginRight: '20px' }}
                 />
             </div>
 
-            <div className="book-info" style={{ flex: 1 }}>
-                <h3>{book.title}</h3>
-                <p className="author">저자: {book.author}</p>
-                <p className="isbn">ISBN: {book.isbn}</p>
-                <p className="publisher">출판사: {book.publisher}</p>
-                <p className="genre">장르: {book.genre}</p>
+            <div className="book-info">
+                <h3>{book.title || "제목 없음"}</h3>
+                <p className="author">저자: {book.author || "정보 없음"}</p>
+                <p className="isbn">ISBN: {book.isbn || "정보 없음"}</p>
+                <p className="publisher">출판사: {book.publisher || "정보 없음"}</p>
+                <p className="genre">장르: {book.genre || "정보 없음"}</p>
 
                 {showActions && (
                     <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
@@ -58,8 +59,7 @@ function BookCard({ book, setBooks, onClick }) {
         </div>
     );
 }
+
 export default BookCard;
-
-
 
 
