@@ -17,16 +17,6 @@ function LoginPage() {
         }));
     };
 
-    // const handleLoginSubmit = (e) => {
-    //     e.preventDefault();
-    //     // 로그인 검증 (아이디는 admin, 비밀번호는 1234)
-    //     if (loginData.loginId === 'admin' && loginData.password === '1234') {
-    //         navigate('/new-book');  // 도서 등록 페이지로 이동
-    //     } else {
-    //         alert('로그인 실패');
-    //     }
-    // };
-
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
 
@@ -89,8 +79,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-
-
-
-

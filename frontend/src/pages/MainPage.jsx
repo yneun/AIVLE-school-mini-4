@@ -17,13 +17,6 @@ function MainPage() {
         }));
     };
 
-    // const handleSignupSubmit = (e) => {
-    //     e.preventDefault();
-    //     // 회원가입 로직 (현재는 단순히 로그인을 위한 데이터 설정)
-    //     console.log('회원가입 데이터:', signupData);
-    //     alert('회원가입이 완료되었습니다. 로그인 해주세요!');
-    //     navigate('/login');  // 로그인 페이지로 이동
-    // };
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
@@ -88,15 +81,3 @@ function MainPage() {
 }
 
 export default MainPage;
-
-
-
-
-
-
-
-
-
-
-
-
