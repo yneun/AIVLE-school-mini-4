@@ -34,8 +34,18 @@ function NewBookPage({ addNewBook }) {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <Box style={{ maxWidth: '600px', margin: 'auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+        // content 영역에서 충분히 공간 확보
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <Box
+                sx={{
+                    width: '100%',
+                    maxWidth: 600,
+                    p: 3,
+                    border: '1px solid #ccc',
+                    borderRadius: 2,
+                    backgroundColor: '#fff'
+                }}
+            >
                 <Typography variant="h4" gutterBottom>도서 등록</Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField
@@ -99,7 +109,7 @@ function NewBookPage({ addNewBook }) {
                         variant="outlined"
                         color="secondary"
                         fullWidth
-                        style={{ marginTop: '10px' }}
+                        sx={{ mt: 2 }}
                         onClick={handleGoBack}
                     >
                         이전 페이지로 돌아가기

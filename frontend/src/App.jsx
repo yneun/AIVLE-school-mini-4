@@ -1,3 +1,53 @@
+// src/App.js
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import NewBookPage from './pages/NewBookPage';
+import EditBookPage from './pages/EditBookPage';
+import BookDetailPage from './pages/BookDetailPage';
+import BookListPage from './pages/BookListPage';
+import Layout from './components/Layout';
+
+function App() {
+    const [books, setBooks] = useState([]);
+
+    const addNewBook = (newBook) => {
+        setBooks(prevBooks => [...prevBooks, { ...newBook, id: prevBooks.length + 1 }]);
+    };
+
+    return (
+        <Router>
+            <Routes>
+                {/* 로그인/메인 페이지는 Layout 없이 단독 렌더링 */}
+                <Route path="/" element={<MainPage />} />
+                <Route path="/login" element={<LoginPage />} />
+
+                {/* Layout 적용 페이지 */}
+                <Route element={<Layout />}>
+                    <Route path="/books" element={<BookListPage books={books} setBooks={setBooks} />} />
+                    <Route path="/new-book" element={<NewBookPage addNewBook={addNewBook} />} />
+                    <Route path="/book/:id" element={<BookDetailPage books={books} />} />
+                    <Route path="/edit-book/:id" element={<EditBookPage books={books} setBooks={setBooks} />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+{/*
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';  // 회원가입 페이지
@@ -35,7 +85,7 @@ export default App;
 
 
 
-/*
+
 
 
 백엔드 연동 확인 코드
@@ -256,5 +306,5 @@ export default App
 //
 //     </>
 //   )
-// }
-*/
+//
+*/}
