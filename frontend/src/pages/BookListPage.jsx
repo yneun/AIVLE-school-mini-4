@@ -47,17 +47,6 @@ function BookListPage({books, setBooks}) {
 
     return (
         <div className="container">
-            {/* 검색창 고정 */}
-            <div className="search-container">
-                <TextField
-                    label="검색어 입력"
-                    variant="outlined"
-                    fullWidth
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-            </div>
-
             {/* 카드 리스트 영역 스크롤 */}
             <div className="card-list-container">
                 <Grid container spacing={3}>

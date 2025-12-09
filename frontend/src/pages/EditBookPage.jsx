@@ -90,7 +90,7 @@ function EditBookPage({ books, setBooks }) {
         return (
             <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
                 <Typography variant="h4" gutterBottom>수정할 도서 선택</Typography>
-                <Paper style={{ maxHeight: '600px', overflow: 'auto' }}>
+                <Paper style={{ maxHeight: '690px', overflow: 'auto' }}>
                     <List>
                         {books.length === 0 ? (
                             <Typography style={{ padding: '20px' }}>등록된 도서가 없습니다.</Typography>

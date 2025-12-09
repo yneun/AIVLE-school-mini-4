@@ -5,15 +5,6 @@
     overflow: hidden;
 }
 
-.search-container {
-    padding: 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 10;
-    position: sticky;
-    top: 0;
-}
-
 .card-list-container {
     flex: 1;
     overflow-y: auto; /* 카드 영역만 스크롤 */
