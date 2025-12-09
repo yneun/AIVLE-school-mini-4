@@ -5,8 +5,7 @@ import { Modal, Box, Typography, TextField, Grid, Container } from '@mui/materia
 import axios from 'axios';
 import './BookListPage.css'; // CSS 따로 관리
 
-function BookListPage() {
-    const [books, setBooks] = useState([]);
+function BookListPage({books, setBooks, fetchBooks}) {
     const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null);
