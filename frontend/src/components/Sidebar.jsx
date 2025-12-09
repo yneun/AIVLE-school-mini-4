@@ -27,6 +27,11 @@ function Sidebar() {
                             도서 수정
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/change-password" className={({ isActive }) => isActive ? "active" : ""}>
+                            비밀번호 변경
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -34,5 +39,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-

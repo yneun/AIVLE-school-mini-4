@@ -53,7 +53,7 @@ function MainPage() {
                 <Typography variant="h4" gutterBottom>Sign Up</Typography>
                 <form onSubmit={handleSignupSubmit}>
                     <TextField
-                        label="아이디(45자 이하)"
+                        label="아이디"
                         name="loginId"
                         value={signupData.loginId}
                         onChange={handleChange}

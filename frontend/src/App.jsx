@@ -8,6 +8,7 @@ import BookDetailPage from './pages/BookDetailPage';
 import BookListPage from './pages/BookListPage';
 import SearchPage from './pages/SearchPage';
 import Layout from './components/Layout';
+import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 
 function App() {
     const [books, setBooks] = useState([]);
@@ -37,7 +38,9 @@ function App() {
                     
                     {/* 2. 목록에서 '수정하기' 버튼 눌렀을 때 (수정 폼 나옴) */}
                     <Route path="/edit-book/:id" element={<EditBookPage books={books} setBooks={setBooks} />} />
-                
+
+                    {/*비밀번호 변경*/}
+                    <Route path="/change-password" element={<ChangePasswordPage />} />
                 </Route>
             </Routes>
         </Router>
