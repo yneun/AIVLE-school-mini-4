@@ -84,4 +84,3 @@ function SearchPage({books = [], setBooks}) {
 }
 
 export default SearchPage;
-

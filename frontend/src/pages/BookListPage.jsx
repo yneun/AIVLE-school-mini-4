@@ -5,19 +5,15 @@ import { Modal, Box, Typography, TextField, Grid, Container } from '@mui/materia
 import axios from 'axios';
 import './BookListPage.css';
 
-function BookListPage({books, setBooks, fetchBooks}) {
+function BookListPage({books, setBooks}) {
     const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null);
 
-    // useEffect(() => {
-    //     axios.get('/api/books')
-    //         .then(response => setBooks(response.data))
-    //         .catch(err => console.error("도서 불러오기 실패:", err));
-    // }, []);
-
     useEffect(() => {
-        fetchBooks();
+        axios.get('/api/books')
+            .then(response => setBooks(response.data))
+            .catch(err => console.error("도서 불러오기 실패:", err));
     }, []);
 
     const filteredBooks = books.filter(book =>

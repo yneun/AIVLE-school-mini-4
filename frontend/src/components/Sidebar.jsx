@@ -1,8 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
 function Sidebar() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // 예: localStorage에서 로그인 정보 삭제
+        localStorage.removeItem('loginId');
+        // 로그인 페이지로 이동
+        navigate('/login');
+    };
+
     return (
         <aside className="sidebar">
             <nav>
@@ -34,6 +43,9 @@ function Sidebar() {
                     </li>
                 </ul>
             </nav>
+            <button className="logout-button" onClick={handleLogout}>
+                로그아웃
+            </button>
         </aside>
     );
 }
