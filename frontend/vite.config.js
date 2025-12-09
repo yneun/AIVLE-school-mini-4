@@ -9,5 +9,12 @@ export default defineConfig({
           strict : false,
       },
    historyApiFallback: true, // SPA 라우팅 지원
+      proxy: {
+          '/api': {
+              target: 'http://localhost:8080', // Spring Boot 서버
+              changeOrigin: true,
+              secure: false,
+          }
+      }
   },
 })

@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
 import BookDetailModal from '../components/BookDetailModal';
-import Header from '../components/Header';
+import axios from 'axios';
 import { Modal, Box, Typography, TextField, Grid, Container } from '@mui/material';
 
-function BookListPage({ books, setBooks }) {
+function BookListPage() {
+    const [books, setBooks] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null);
+
+    function fetchBooks() {
+        axios.get('/api/books')
+            .then(response => {
+                console.log("서버에서 받은 책 데이터:", response.data);
+                setBooks(response.data);
+            })
+            .catch(err => {
+                console.error("도서 불러오기 실패:", err);
+            });
+    }
+
+    useEffect(() => {
+        fetchBooks();
+    }, []);
 
     const filteredBooks = books.filter(book =>
         book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
