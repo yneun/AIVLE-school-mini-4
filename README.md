@@ -40,7 +40,8 @@ AI 이미지 생성 기술을 활용해 도서 표지를 자동 생성하는 기
 <br>
 
 ### 4일차
-<img width="600" height="1386" alt="image" src="https://github.com/user-attachments/assets/896aba7d-8b95-4308-ac1f-91730800ce82" />
+<img width="600" height="1373" alt="image" src="https://github.com/user-attachments/assets/09d41882-3ccd-4334-a660-083bea8a7ea7" />
+
 
 - fetch를 사용하여 OpenAI API 직접 호출해 도서 표지 생성 기능 구현
 - 백엔드 API를 호출하여 표지 URL을 DB에 최종 저장 및 화면에 표시
