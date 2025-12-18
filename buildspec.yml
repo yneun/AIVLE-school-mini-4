@@ -23,8 +23,9 @@ phases:
 
       - echo "Building backend"
       - cd backend
-      - ./mvnw package -DskipTests
-      - cd ..
+      - chmod +x gradlew
+      - ./gradlew clean build -x test
+
   post_build:
     commands:
       - echo "Build completed for both frontend and backend"
