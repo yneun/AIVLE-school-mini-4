@@ -32,5 +32,7 @@ phases:
 
 artifacts:
   files:
+    - appspec.yml
+    - scripts/**/*
     - frontend/dist/**/*
     - backend/target/*.jar
