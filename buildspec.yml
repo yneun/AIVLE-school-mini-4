@@ -26,6 +26,9 @@ phases:
       - chmod +x gradlew
       - ./gradlew clean build -x test
 
+      - echo "Set execute permission for scripts"
+      - chmod +x scripts/*.sh
+
   post_build:
     commands:
       - echo "Build completed for both frontend and backend"
