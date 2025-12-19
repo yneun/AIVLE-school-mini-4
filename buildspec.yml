@@ -41,7 +41,7 @@
 #     - frontend/dist/**/*
 #     - backend/target/*.jar
 
-version: 0.3
+version: 0.2
 
 phases:
   install:
@@ -69,6 +69,10 @@ phases:
       - cd $CODEBUILD_SRC_DIR
       - echo "Set execute permission for scripts"
       - chmod +x scripts/*.sh
+      - echo "Saving backend JAR name"
+      - BACKEND_JAR=$(ls backend/build/libs/*.jar | xargs -n 1 basename)
+      - echo $BACKEND_JAR > scripts/backend-jar-name.txt
+
   post_build:
     commands:
       - echo "Build completed for both frontend and backend"
@@ -77,5 +81,6 @@ artifacts:
   files:
     - appspec.yml
     - scripts/**/*
+    - scripts/backend-jar-name.txt
     - frontend/dist/**/*
     - backend/build/libs/*.jar
