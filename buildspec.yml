@@ -1,9 +1,51 @@
-version: 0.2
+# version: 0.2
+
+# phases:
+#   install:
+#     runtime-versions:
+#       # Node.js는 React 빌드용
+#       nodejs: 18
+#       java: corretto17
+#     commands:
+#       - echo "Installing dependencies for frontend and backend"
+#       - cd frontend
+#       - npm ci
+#       - cd ..
+#   pre_build:
+#     commands:
+#       - echo "Pre-build started"
+#   build:
+#     commands:
+#       - echo "Building frontend"
+#       - cd frontend
+#       - npm run build
+#       - cd ..
+
+#       - echo "Building backend"
+#       - cd backend
+#       - chmod +x gradlew
+#       - ./gradlew clean build -x test
+
+#       - cd $CODEBUILD_SRC_DIR
+#       - echo "Set execute permission for scripts"
+#       - chmod +x scripts/*.sh
+
+#   post_build:
+#     commands:
+#       - echo "Build completed for both frontend and backend"
+
+# artifacts:
+#   files:
+#     - appspec.yml
+#     - scripts/**/*
+#     - frontend/dist/**/*
+#     - backend/target/*.jar
+
+version: 0.3
 
 phases:
   install:
     runtime-versions:
-      # Node.js는 React 빌드용
       nodejs: 18
       java: corretto17
     commands:
@@ -20,16 +62,13 @@ phases:
       - cd frontend
       - npm run build
       - cd ..
-
       - echo "Building backend"
       - cd backend
       - chmod +x gradlew
       - ./gradlew clean build -x test
-
       - cd $CODEBUILD_SRC_DIR
       - echo "Set execute permission for scripts"
       - chmod +x scripts/*.sh
-
   post_build:
     commands:
       - echo "Build completed for both frontend and backend"
@@ -39,4 +78,4 @@ artifacts:
     - appspec.yml
     - scripts/**/*
     - frontend/dist/**/*
-    - backend/target/*.jar
+    - backend/build/libs/*.jar

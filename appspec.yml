@@ -3,7 +3,6 @@ os: linux
 files:
   - source: frontend/dist/
     destination: /var/www/frontend/
-
   - source: backend/build/libs/*.jar
     destination: /home/ec2-user/backend/
 
@@ -12,7 +11,6 @@ hooks:
     - location: scripts/stop_app.sh
       timeout: 300
       runas: ec2-user
-
   AfterInstall:
     - location: scripts/start_app.sh
       timeout: 300
