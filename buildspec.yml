@@ -1,49 +1,91 @@
+# version: 0.2
+
+# phases:
+#   install:
+#     runtime-versions:
+#       nodejs: 18
+#       java: corretto17
+#     commands:
+#       - echo "Installing dependencies for frontend and backend"
+#       - cd frontend
+#       - npm ci
+#       - cd ..
+
+#   pre_build:
+#     commands:
+#       - echo "Pre-build started"
+
+#   build:
+#     commands:
+#       - echo "Building frontend (Vite)"
+#       - cd frontend
+#       - npm run build
+#       - cd ..
+
+#       - echo "Building backend (Spring Boot)"
+#       - cd backend
+#       - chmod +x gradlew
+#       - ./gradlew clean build -x test
+
+#       - echo "Check backend JAR"
+#       - ls -al build/libs
+#       - BACKEND_JAR=$(ls backend/build/libs/*.jar | xargs -n 1 basename)
+#       - echo $BACKEND_JAR > scripts/backend-jar-name.txt
+#       - cd ..
+
+
+#   post_build:
+#     commands:
+#       - echo "Build completed for both frontend and backend"
+
+# artifacts:
+#   files:
+#     - appspec.yml
+#     - scripts/**/*
+#     - scripts/backend-jar-name.txt
+#     - frontend/dist/**/*
+#     - backend/build/libs/*.jar
+
+#   base-directory: .
+
 version: 0.2
 
 phases:
   install:
     runtime-versions:
-      nodejs: 18
       java: corretto17
+      nodejs: 18
+
+  pre_build:
     commands:
-      - echo "Installing dependencies for frontend and backend"
+      - echo "Frontend install"
       - cd frontend
       - npm ci
       - cd ..
 
-  pre_build:
-    commands:
-      - echo "Pre-build started"
-
   build:
     commands:
-      - echo "Building frontend (Vite)"
+      - echo "Frontend build"
       - cd frontend
       - npm run build
       - cd ..
 
-      - echo "Building backend (Spring Boot)"
+      - echo "Backend build"
       - cd backend
       - chmod +x gradlew
       - ./gradlew clean build -x test
-
-      - echo "Check backend JAR"
-      - ls -al build/libs
-      - BACKEND_JAR=$(ls backend/build/libs/*.jar | xargs -n 1 basename)
-      - echo $BACKEND_JAR > scripts/backend-jar-name.txt
       - cd ..
-
 
   post_build:
     commands:
-      - echo "Build completed for both frontend and backend"
+      - echo "=== build output ==="
+      - ls -al
+      - ls -al backend/build/libs
+      - ls -al frontend/dist
 
 artifacts:
   files:
     - appspec.yml
-    - scripts/**/*
-    - scripts/backend-jar-name.txt
+    - deploy-scripts/**/*
+    - backend/build/libs/**/*
     - frontend/dist/**/*
-    - backend/build/libs/*.jar
-
-  base-directory: .
