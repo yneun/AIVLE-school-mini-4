@@ -26,6 +26,8 @@ phases:
       - cd backend
       - chmod +x gradlew
       - ./gradlew clean build -x test
+      - echo "Check backend JAR"
+      - ls -al build/libs
       - cd ..
 
       - echo "Saving backend JAR name"
@@ -43,3 +45,5 @@ artifacts:
     - scripts/backend-jar-name.txt
     - frontend/dist/**/*
     - backend/build/libs/*.jar
+
+  base-directory: .
