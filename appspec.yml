@@ -11,12 +11,6 @@ files:
     destination: /home/ec2-user/deploy-scripts
 
 hooks:
-  BeforeInstall:
-    - location: deploy-scripts/stop_app.sh
+  ApplicationStart:
+    - location: deploy-scripts/application-start-hook.sh
       timeout: 300
-      runas: ec2-user
-
-  AfterInstall:
-    - location: deploy-scripts/start_app.sh
-      timeout: 300
-      runas: ec2-user
