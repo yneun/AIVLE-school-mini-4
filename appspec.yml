@@ -4,10 +4,10 @@ files:
   - source: frontend/dist
     destination: /var/www/frontend
 
-  - source: backend/build/libs/*.jar
+  - source: backend/build/libs
     destination: /home/ec2-user/backend
 
-  - source: scripts
+  - source: deploy-scripts
     destination: /home/ec2-user/deploy-scripts
 
 hooks:
