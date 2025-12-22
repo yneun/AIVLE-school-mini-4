@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    PATH: $JAVA_HOME/bin:$PATH
-
 phases:
   install:
     runtime-versions:
