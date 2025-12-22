@@ -1,5 +1,10 @@
 version: 0.2
 
+env:
+  variables:
+    JAVA_HOME: /usr/lib/jvm/java-17-amazon-corretto
+    PATH: $JAVA_HOME/bin:$PATH
+
 phases:
   install:
     runtime-versions:
@@ -26,8 +31,11 @@ phases:
       - cd backend
       - chmod +x gradlew
       - ./gradlew clean build -x test
+      
       - echo "Check backend JAR"
       - ls -al build/libs
+      - BACKEND_JAR=$(ls build/libs/*.jar | xargs -n 1 basename)
+      - echo $BACKEND_JAR > ../scripts/backend-jar-name.txt
       - cd ..
 
       - echo "Saving backend JAR name"
