@@ -8,4 +8,3 @@ chmod +x /home/ec2-user/deploy-scripts/*.sh
 echo "Cleaning /var/www/frontend"
 rm -rf /var/www/frontend/*
 mkdir -p /var/www/frontend
-sudo chown -R ec2-user:ec2-user /var/www/frontend
