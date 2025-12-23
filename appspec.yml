@@ -15,8 +15,6 @@ files:
 hooks:
   BeforeInstall:
     - location: deploy-scripts/before-install.sh
-      timeout: 300
 
   ApplicationStart:
     - location: deploy-scripts/application-start-hook.sh
-      timeout: 300
