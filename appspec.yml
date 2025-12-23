@@ -13,8 +13,8 @@ files:
     destination: /home/ec2-user/deploy-scripts
 
 hooks:
-  BeforeInstall:
-    - location: deploy-scripts/before-install.sh
+  AfterInstall:
+    - location: deploy-scripts/after-install.sh
 
   ApplicationStart:
     - location: deploy-scripts/application-start-hook.sh
