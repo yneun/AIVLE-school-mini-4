@@ -1,9 +1,10 @@
-version: 0.0
+version: 0.1
 os: linux
 
 files:
   - source: frontend/dist
     destination: /var/www/frontend
+    overwrite: yes
 
   - source: backend/build/libs
     destination: /home/ec2-user/backend
