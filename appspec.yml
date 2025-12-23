@@ -1,5 +1,6 @@
 version: 0.0
 os: linux
+
 files:
   - source: frontend/dist
     destination: /var/www/frontend
@@ -11,6 +12,10 @@ files:
     destination: /home/ec2-user/deploy-scripts
 
 hooks:
+  BeforeInstall:
+    - location: deploy-scripts/before-install.sh
+      timeout: 300
+
   ApplicationStart:
     - location: deploy-scripts/application-start-hook.sh
       timeout: 300
