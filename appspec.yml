@@ -3,16 +3,19 @@ os: linux
 
 files:
   - source: frontend/dist
-    destination: /var/www/frontend
+    destination: /var/www/cradle-of-books
     overwrite: yes
 
   - source: backend/build/libs
-    destination: /home/ec2-user/backend
+    destination: /opt/cradle-of-books
 
   - source: deploy-scripts
     destination: /home/ec2-user/deploy-scripts
 
 hooks:
+  BeforeInstall:
+    - location: deploy-scripts/before-install.sh
+    
   AfterInstall:
     - location: deploy-scripts/after-install.sh
 
